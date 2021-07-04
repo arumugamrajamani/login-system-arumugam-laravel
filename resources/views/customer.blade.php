@@ -14,7 +14,7 @@
           <div class="col-md-10 mb-3">
       
                 <label for="validationTextarea">Comments</label>
-                <textarea class="form-control" id="validationTextarea" row="2" placeholder="Comments"style="height:100%;"  required></textarea>
+                <textarea class="form-control" id="comments" name="comments" row="2" placeholder="Comments"style="height:100%;"  required></textarea>
         </div>
         <div class="col-md-2 mt-5 mb-3 text-center">
             <button class="btn btn-prim btn-lg" style="  font-size: 13px;
