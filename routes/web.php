@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CommentController;
+
 
 Route::view('/', 'welcome');
 Auth::routes();
+
+Route::post('comment', [CommentController::class, 'store']);
+
 
 Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/customer', [LoginController::class,'showCustomerLoginForm']);
@@ -29,12 +34,13 @@ Route::post('/register/admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/customer', [RegisterController::class,'createCustomer']);
 
 Route::group(['middleware' => 'auth:customer'], function () {
-    Route::view('/customer', 'customer');
+   
+    Route::get('/customer', [CommentController::class, 'show']);
 });
 
 Route::group(['middleware' => 'auth:admin'], function () {
     
-    Route::view('/admin', 'admin');
+    Route::get('/admin', [CommentController::class, 'show']);
 });
 
 Route::get('logout', [LoginController::class,'logout']);
